@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+    shop_api:
+        container_name: shop_api
+        image: shop_api
+        ports:
+            - '1000:1000'
+        volumes:
+            - ./api:/api
+        depends_on: 
+            - mongodb
+    mongodb:
+        container_name: shop_db
+        image: mongo
+        ports:
+            - '27019:27017'
+        environment: 
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
+        volumes: 
+            - ./data:/data/db
