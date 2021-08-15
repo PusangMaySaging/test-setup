@@ -1,16 +1,6 @@
-from flask.view import View
+from flask.view import MethodView
 
-class AuthView(View):
-
-    def login():
-        
-        pass
-    
-    def register():
-        
-        pass
-    def getAccessToken():
-
-        pass
+class AuthView(MethodView):
+    pass
 
 
