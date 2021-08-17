@@ -5,7 +5,7 @@ from models.product import Product
 class ProductView(MethodView):
     def get(self):
         try:
-            products = Product.get() #list of products
+            products = Product.get()
             return jsonify({'payload': products})
         except Exception as error:
             print(error)

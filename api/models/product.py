@@ -16,17 +16,17 @@ class Product(Document):
           Product(**data).save()
 
     @classmethod
-    def get(cls, projections=None, filters={}):
+    def get(cls,filters={}, projections=None):
         #list of producs
         if(projections):
-           return querysets_to_dicts(cls.objects(__raw__ = filters).only(*projections))
-        return querysets_to_dicts(cls.objects(__raw__ = filters))
+           return list(cls.objects(__raw__ = filters).as_pymongo().only(*projections))
+        return list(cls.objects(__raw__ = filters).as_pymongo())
     
     @classmethod
-    def getOne(cls, projections=None, filters={}):
+    def getOne(cls, filters={}, projections=None):
         #single product
         if(projections):
-           return queryset_to_dict(cls.objects(__raw__ = filters).only(*projections)).first()
-        return queryset_to_dict(cls.objects(__raw__ = filters)).first()
+           return cls.objects(__raw__ = filters).as_pymongo().only(*projections).first()
+        return cls.objects(__raw__ = filters).as_pymongo().first()
     
 

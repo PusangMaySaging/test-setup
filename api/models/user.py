@@ -32,5 +32,7 @@ class User(Document):
     @classmethod
     def getOne(cls, filters={}, projections=None):
        if(projections):
+           print("HAS PROJECTION")
+           print(projections)
            return queryset_to_dict(cls.objects(__raw__ = filters).only(*projections).first())
        return queryset_to_dict(cls.objects(__raw__ = filters).first())

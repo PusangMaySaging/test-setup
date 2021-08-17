@@ -10,6 +10,8 @@ services:
             - ./api:/srv/api
         depends_on: 
             - mongodb
+        environment: 
+            - PYTHONUNBUFFERED=1
     mongodb:
         container_name: shop_db
         image: mongo
@@ -20,3 +22,13 @@ services:
             MONGO_INITDB_ROOT_PASSWORD: example
         volumes: 
             - ./mongodb_data:/data/db
+    shop_spa:
+        container_name: shop_spa
+        image: shop_spa
+        ports: 
+            - '2000:2000'
+        volumes: 
+            - ./spa/node_modules:/srv/spa/node_modules
+        depends_on: 
+            - shop_api
+            - mongodb

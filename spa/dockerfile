@@ -1,0 +1,11 @@
+FROM node:14
+
+COPY . /srv/spa
+
+WORKDIR /srv/spa
+
+EXPOSE 2000
+
+RUN  npm install
+
+CMD ["npm","run","start"]
