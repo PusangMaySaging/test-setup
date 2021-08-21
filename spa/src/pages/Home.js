@@ -1,19 +1,27 @@
 import React from 'react'
 import {useQuery} from 'react-query'
+    
+const fetchProducts = async()=>{
+    const response = await fetch('http://localhost:1000/api/v1/products')
+    return response.json()
+}
+
+
+
 const Home = () => {
 
-    const {error, data, isLoading} = useQuery('sample', async()=>{
-        const response = await fetch('http://localhost:1000/api/v1/products')
-        return response.data
-    })
-
-    const lisItem = isLoading ? [] :data.map((d)=><span>{d.name}</span>)
-    return (
+    const {error, data:products, isLoading} = useQuery('sample', fetchProducts)   
+    return !isLoading && !error ? (
         <div>           
-             <h1>this is Home Page</h1>
-             {listItem}
+             {
+                 products.payload.map(d =>{
+                    return <span key={d._id}>{d.name}</span>
+                 })
+             }
         </div>
-    )
+    ):<span>LOADING....</span> 
+    
 }
+
 
 export default Home

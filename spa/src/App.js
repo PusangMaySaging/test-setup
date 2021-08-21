@@ -5,6 +5,7 @@ import NotFound from './pages/errors/NotFound'
 function App() {
 
   return (
+    <div className="bg-gray-50">
     <Router>
       <Switch>
       <Route path='/login' component={Login} />
@@ -12,6 +13,7 @@ function App() {
       <Route component={NotFound} />
       </Switch>
     </Router>
+    </div>
   );
 }
 

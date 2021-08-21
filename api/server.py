@@ -5,8 +5,10 @@ from mongoengine import connect
 from models.product import Product
 from setup import initialize
 from helpers.utils import CustomJSONEncoder
+from flask_cors import CORS
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.json_encoder = CustomJSONEncoder
     app.register_blueprint(register_v1('/api/v1'))
     print(f'''     
