@@ -5,7 +5,7 @@ from bson import ObjectId
 
 def create_hash(password):
     ph = PasswordHasher()
-    hashed_password = ph.hajsh(password)
+    hashed_password = ph.hash(password)
     return hashed_password
 
 def verify_password(db_password, sent_password):

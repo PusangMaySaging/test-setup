@@ -9,4 +9,4 @@ EXPOSE 1000
 RUN pip3 install -r requirements.txt
 
 # CMD ["python3","-u","server.py"]
-CMD ["gunicorn","-w 1" ,"server:create_app()", "-b 0.0.0.0:1000", "--reload"]
+CMD ["gunicorn","-w 5" ,"server:create_app()", "-b 0.0.0.0:1000"]

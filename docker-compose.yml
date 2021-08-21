@@ -3,7 +3,7 @@ version: '3.5'
 services:
     shop_api:
         container_name: shop_api
-        image: shop_api
+        image: ryanali12/shop_api
         ports:
             - '1000:1000'
         volumes:
@@ -24,11 +24,11 @@ services:
             - ./mongodb_data:/data/db
     shop_spa:
         container_name: shop_spa
-        image: shop_spa
+        image: ryanali12/shop_spa
         ports: 
             - '2000:2000'
         volumes: 
-            - ./spa/node_modules:/srv/spa/node_modules
+            - ./spa:/srv/spa
         depends_on: 
             - shop_api
             - mongodb

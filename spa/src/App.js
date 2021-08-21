@@ -1,12 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import NotFound from './pages/errors/NotFound'
 function App() {
+
   return (
-    <div className="App">
-      
-     
-    </div>
+    <Router>
+      <Switch>
+      <Route path='/login' component={Login} />
+      <Route path='/' component={Home} exact></Route>
+      <Route component={NotFound} />
+      </Switch>
+    </Router>
   );
 }
 
