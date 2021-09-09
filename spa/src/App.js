@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import NotFound from './pages/errors/NotFound'
+import Toast from './components/Toast'
 function App() {
 
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route component={NotFound} />
       </Switch>
     </Router>
+    <Toast></Toast>
     </div>
   );
 }

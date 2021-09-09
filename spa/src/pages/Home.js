@@ -6,8 +6,6 @@ const fetchProducts = async()=>{
     return response.json()
 }
 
-
-
 const Home = () => {
 
     const {error, data:products, isLoading} = useQuery('sample', fetchProducts)   

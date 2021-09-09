@@ -19,6 +19,9 @@ const Login = () => {
         try{
             const URL = 'http://localhost:1000/api/v1/login'
             const response = await axios.post(URL, formData)
+            if(!response.data.success){
+                throw(response.data.message)
+            }
         }
         catch(error){
             console.log(error)
